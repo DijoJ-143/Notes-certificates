@@ -1,0 +1,1321 @@
+popular open source JS 
+TS framework developed by Google
+Allows you to build dynamic single page applications with ease.
+powerful features & robust architecture.
+
+
+1.Two way data binding
+2.Dependency injection(Enhanced)
+3.Component based architecture
+4.more streamlined & efficient development
+5.Standalone components
+6.Manage data using singals
+7.Excellent tooling support
+8.Seamless integration with other libraries
+9.Vibrant community of developerd
+
+
+-----------------------------------------------------------------------------
+
+
+Angular CLI is a command - line interface tool 
+which is used to intialize, develop, scaffold &
+maintain Anguular applications
+directly from the command shell
+ 
+1. Running the development server
+2. Deploying the application
+3. secure binding of data
+4. Instant support & good data security
+5. Add additional features
+6. Test the angular application 
+
+---------------------------------node cmd---------------------------
+1. NOde.js(use of npm):: Lightweight webserver to host the angular applications locally in ur system 
+
+node -v:: current version
+
+nvm alias default node
+nvm use default 
+
+----------------------------------vscode--------------------------------------
+npm i -g @angular/cli
+ng v
+
+
+(ng stands for angular cli )
+
+------------------------------------angular cmd-----------------------------
+
+ng new applicationmname 
+ng serve
+ng serve -o
+
+
+---------
+ng g c componentname
+
+
+-------[tips]
+spread operator [...this.items]::
+
+{{items.join(",")}}:: using , we can seperate an array
+--------------------------------------Theory--------------------------------
+
+
+
+Node_modules: contains all the third party libraries on which the angular application depends upon
+
+public : favicon.ico:  officail angular icon
+
+app: component file, config file, route file
+
+main .server.ts: its the key component for bootstrapping the angular application on the server side
+main.ts : boostrapping the aa in the browser
+style.css: global styling
+
+.editorconfig: maintain consistent coding style , when multiple develoers are working on the same project, same formatting rules
+
+.gitignore: ensure that certain files or folders remain hidden from git repo like node _ module foder
+which contains fles and is not needed as a part of the code repo 
+
+angular.json : 
+
+node.js:: its a crucial file as it sets up and configure the node.js server that will serve angular application.
+ensures rhat the angular application can be render pages on the server before sending them to the client enhancing performance 
+
+
+spec.ts :: for testing 
+route.ts::
+
+------------------------------------------------angular 19 --------------------
+1. standalone component 
+
+	 replaced structuere to @Component({
+selector:'app-root',
+templateUrl:''
+styleUrl:''
+imports:[],
+})
+
+By default every component in Angular is a standalone component.
+if u dont want thwn @Component({standalone:false})
+
+
+2. Improved Dependency Injection
+
+inject():: without using constructors,  we can inject ,
+
+earlier:constructor(private http : HttpClient){}
+now: private http= inject(HttpClient);
+
+3. optimized preloading 
+
+4. improved token injection:
+such as usevalue , useFactory
+
+@Conmponet({useValue:{}})
+
+
+
+
+-----------------[component]
+is a basic building block of an Angular aplication 
+
+root component : app-----> eventually branch out to other component 
+
+
+
+1. import component decorator from angular/core 
+
+--------------[decorator]
+A function which modifies a class or property definition  
+
+eg: @Component({}) :: which is component decorator:: @DirectiveDecorator
+
+[DirectiveDecorator]
+whenever Angular renders tge directive, it changes the DOM according to the instructions given by the directive 
+provide meta data
+meta data provides information on what to do with the class
+
+
+
+------------------------------
+1.	selector:'app-root':: HTML tag
+2.	standalone: true:: tandalone components can be used without being declared in an NgModule & is part of Angular
+	effort to simplify the component model 
+
+3.	imports:[]:: is generally used for specifiying the component or any other dependency names which will be used by the current component 
+			without specifiying the component name sinside the imports array  we cannot use them inside the current component 
+
+
+--------------------------------------[INTERPOLATION   {{}} ]
+
+{{}}:: delimiters
+
+is a technique used to bind data from component class to the view template 
+
+value = null or undfined
+{{value}}:: empty string
+
+{{"hai"+value}}
+{{6+2}}
+{{isActive? 'active':'Inactive'}}
+
+use:: concat strings or bind string values 
+
+--------------------------------[PROPERTYBINDING [] ]
+
+[propertname]="variablename"
+
+we can bind:: class, id, src, href any target propert ::: i.e we assign value 
+
+
+use: to toggle button feature,set path programmaticaly, share values between 
+the components
+
+------------------------------eventBinding ()--------------------------
+in js : onClick
+in angular: click 
+
+
+(click)="function("value if any ")"
+
+
+In eventBinding , data is sent from the DOM to the component that is why its is a one way binding 
+Whereas in property binding, we send the data from the component to the DOM or view 
+-------------------------------mouseEvent------------------------
+
+click
+dbclick
+mouseover
+mousedown
+drag
+mouseleave
+mouseup
+dragover
+
+-----------------------------keyboard--------------------------
+
+(keypress) event = (keydown) event + (keyup) event 
+
+keypress.eneter
+
+keydown,keyup,select,focus,input,cut,copy,paste,blur
+
+------------------------------------EVENT OBJECT-----------------------------
+The evenet object ($event) is a reserved keyword to handle the events
+ in angular & contains a lot of information when the event is raised
+
+
+<input type ="" (keypress/mouse/.......)="function($event)" />
+when the component or directive raises the evenet the event handler
+executes the template statement i.e., the function().
+
+
+[e:any:: Accepts any type of argument without any restrictios.]
+
+-----------------------
+e.target.value :: gets the values after the keypress gets fired 
+
+--------------------------------[]------------------------------------------
+The $event object in angular represents the DOM evnt object 
+that is passed to an event handler when an evem=nt is triggede
+
+.preventDefault():: prevents the default behaviour
+
+
+accessinig input value: e.target.value
+
+preventing default action:e.preventDefault()
+
+stopping event propagation: e.stopPropagation()
+
+Tracking mouse position: trackMouse(e:mouseEvent){
+this.mouseX= event.clientX;
+this.mouseY= e.clientY;
+}
+
+
+handling key events:<input type ="" (keypress/mouse/.......)="function($event)" />
+
+
+Does not implicite passing of $event object only with events only 
+
+
+
+
+
+-------------------------------------------------
+(keydown.shift.y)-"isShift()":: called as key event binding 
+
+OR
+
+isShift(e:any){
+if(e.shiftKey&& e.key=='y'){
+c.l('shift key ')}
+}
+
+-------------------------------------focusing----------------------------
+
+Elements like <input>, <button>, <a> are focusable by default.
+
+But elements like <div>, <span>, <p> are not focusable by default.
+
+If an element isn't focusable, it won’t receive keyboard events like keydown, keyup, or keypre
+
+tabindex="0"
+
+
+
+
+-------------------------------------[(ngModel)] two way binding ---------------------------------------
+
+sharing the data or synchronization between the model the component class
+and the view i.e the HTML template 
+
+[()]:: banana in the box:: combination of both property and eventbinding
+
+steps
+-----
+
+1. FormsModule
+		controls& handle:: input,select.textarea.other form controls
+
+		primarily used for template-driven forms,its role extends beyond just enabling two-way binding
+		This module can be used in many areas.	
+
+2. import it 
+
+
+
+
+dis:: TightCoupling between componnet data model and the UI
+
+	performance issue 
+
+
+[(ngModel)] is meant for form controls like:
+
+<input>
+
+<select>
+
+<textarea>
+
+	------------------------------------------------------------- 
+ get totalPrice(): number {
+    return this.quantity * this.price;
+  }
+
+:: get use helps in calling the method without paranthesis
+
+-----------------------------DIRECTIVE-------------------------------------
+
+
+1. One of the most important & core features in angular
+2. A set of classes used for adding some additional behaviour to the elements/the components of the 
+	angular application
+
+eg:..., Adding/REmoving an element from the DOM.
+
+
+					[TYPES]
+				-----------------------
+
+1. STRUCTURAL DIRECTIVES
+	Responsible for shaping & reshaping the DOM structure by handling 
+	tasks like adding , removing & manipulating the elements
+
+*ngIf, *ngFor,*ngSwitch
+
+2. Attribute directives
+	responsible for changing the behaviour or appearance of HTML 
+	elements
+
+ngClass,ngStyle,ngModel
+
+3.Component directives
+	responsible for controlling the rendering the angular components 
+	in the template 
+
+4.Custom directives
+	Not  standard directives as they are created by the user ,
+	for difing a new behaviour of the elements or extending some
+	 functionality.
+
+
+
+--------------------------------[STRUCTURAL DIRECTIVES]------------------
+		prefixed by *
+      ADDING/REMOVING THE ELEMENT FROM THE DOM
+	import:commonModule
+```````````````````````````````[*ngIf	]````````````````````````````````````````
+
+<h1 *ngIf="num>o"> DISPLAY  {{num}}</h1>
+
+
+using it rather than css will improve PERFORMANCE as its not rendered by angular 
+
+
+The *ngIf is a seperate directive written itself in angular using the @Directive
+The @if is a part of the template engine itself like the interpolation sysntax 
+{{variable}} 
+
+
+
+
+```````````````````````````````````````````````[*ngFor  OF,INDEX,TRACKBY]```````````````````````````
+*ngFor="let value of fullstack"
+
+value: variable name 
+of
+fullstack: perform an iteration on every item 
+
+
+of ::
+index as i :: used onbly with ngFor directives
+
+
+[by default angular-rerender the entire list whenever the data in the array changes, even if only a single item has changed
+	This can be inefficient for large lists. So the [track by] function
+	helps, angulr identify each item uniquely, so only the affected items are re-rendered basically optimizing the performance 
+]
+
+When you use trackBy, Angular knows which items are being reused or updated. This helps it avoid unnecessary re-renders for items that haven't changed. This optimization ensures that the properties (name, id) of the items can be accessed immediately without the unnecessary overhead of full re-rendering.
+
+However, without trackBy, Angular would not be as efficient in handling list changes, and in some cases, it might create new DOM elements, causing delays or issues in property availability.
+
+``````````````````````````````````````````````[ngSwitch]`````````````````````````````````````````````
+div [ngSwitch]="value"
+
+p *ngSwitchCase ="value1".....
+
+p *ngSwitchDefault.....
+
+
+Used to conditionally render the view
+
+
+-----------@switch
+
+@switch(){
+@case(){}
+.
+.
+.
+
+.
+@default(){}
+
+ }
+
+
+----------------------------[ATTERIBUTE DIRECTIVE]-----------------------------------------------
+
+ASSIGNING css style , css class to element 
+
+[ngClass="value"]   or [ngClass="'value'"] :: for this metion the value with 
+same value in ts 
+
+for objects
+
+<p [ngClass]="{'updateStyle':true},....">
+1. import value in ts
+	value : any ='value'
+
+
+-----------------------[ngStyle:::For inline styling ]-----------
+
+[ngStyle]="{key:'value'}"
+[ngStyle]="{'property':getColor()}"
+
+
+
+------------------------------[ng-container]----------------
+angular tag to group the elements
+
+dont get rendederd in DOM as it is an ANgular directive and not an actual
+html tag
+
+----------------------------------[ng-Template]----------
+directive is a structural directives used for rendering templates dynamically inside
+the same or different components.
+
+
+
+-------------------------------[ng-template]-------------------------
+diective is used to define a block of code that can be reused or rendered multiple
+times inside the document 
+
+[reference variable is required ]
+
+
+-----------------------------------[*ngtemplateOutlet]----------
+
+
+we need conditions to turn on the ng template 
+but by ngTemplateOutlet  wecan do it to turn on ng template
+
+<ng-template #show let-msg="showMessage">
+<p>{{msg}}<>
+<ng-container *ngTemplateOutlet="show" context:{showMessage:'hehhe'}>
+
+
+context:{key:value}:: context is an optional parameter
+		which passes an object to the template 
+
+-------------------------------[$implicit]--------------------
+
+implicit property i.e BYDEFAULT set it as property
+
+
+<ng-template #show let-person>
+<p>{{person.name}}<>
+<ng-container *ngTemplateOutlet="show" context:{$implicit:showdetails}>
+
+
+
+
+
+----------------------------[component lifecycle]-------------
+
+when a omponent is created in angular it goes through different
+ lifecyle phases like from being created to being destroyed 
+
+
+
+1. when class is created the construtor method is alled automatially
+
+AFTER CONSTRUCTION THE COMPONENT GOES THROUGH A SERIES OF LIFE CYCLE PHASES, LIKE
+
+A	Constructor
+1	ngOnChanges
+2	ngOnInit
+3	ngDoCheck 
+4	ngAfterContentInit
+5	ngAfterContentChecked 
+6	ngAfterViewInit 
+7	ngAfterViewChecked
+8	ngDestroy
+
+
+[ngOnInit]:: implement OnInit
+		::called automatically when componet is created 
+
+-----------------------------------------------------------------------------
+
+[ngOnChanges]: hook is called everytime whenever there isa a change detected 
+		in input properties of the componenet.
+---html
+<app-test [inputValue]='inputValue'></>
+
+
+
+
+----ts
+	....implemets OnChanges
+@Input() inputValue:string='';:: used for passsing the value from the parent 
+component to the child component.
+ngOnChanges(changes:simpleChanges):void	{
+}
+
+<app-life-cycle [inputValue]="inputValuefromApp"></app-life-cycle>
+
+	
+
+
+
+
+
+Changes detected: ObjectinputValue: SimpleChangecurrentValue: "HELLO LIFE CYCLE"firstChange: truepreviousValue: undefined[[Prototype]]: Object[[Prototype]]: Objectconstructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ ()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()__proto__: (...)get __proto__: ƒ __proto__()set __proto__: ƒ __proto__()
+core.mjs:20782 Angular is running in development mode.
+
+
+
+
+
+[1. when the input data is changed 
+2. cahnged info is passed to the simpleChanges interface.
+3. Change reflected in the output 
+TO HANDLE INPUT CHANGES like reading the values & updating the fields, the ngOnChanges hook comes handy!!
+
+@Input()
+
+]
+
+
+[DIFFERENCE WITH NGONINIT]
+The ngOnChnges() hook is called whenever an input property changes,
+even before the component is intiaized
+
+While ngOnInit() hook is called only once, after the first change 
+detection cycle, when the component is intialized
+
+---------------------breif  -------------
+ngOnChanges(changes:SimpleChanges){
+}
+
+		[SIMPLE CHANGES]
+
+key:value
+previousValue:
+currentValue:
+firstChange:
+
+
+
+
+changes['property']:: allows to keep track of any change in input value property of app component
+
+changes['property'].prevoiusValue:: returns the value which was previously entered in the input
+changes['property'].currentValue:: returns teh current value entered in the input 
+
+firstChange :: returns true if pv and cv are same 
+
+s
+
+
+doesnot store the history of changes between detection cycle ::: only most recent
+ changes is detected
+-------------------------------------[ngOnInit()]----------------------------------------	
+called only once during the component lifecycyle when a component is inttialized
+
+called after ngOnChanges()
+	when there is no template-bound inputs,
+the ngOnInit() call is made fist.
+
+
+whenever the ngOnit() call is made by angular -it creates that 
+angular is done creating the component interbnally and whatever initialization
+ code is written inside the ngOnInit() hook is executed at that moment 
+
+
+best practice to use the upadation in ngOnInit():: as it waits till the component is rendered
+1. NgOnINit() is defenitly a preferred place to fetch data from api
+2. is ready to handle asynchronous data & thet all necessary services 
+	are properly injected & available
+3. No multiple calling 
+
+[if we try to access input properties in the cobstructor
+they will be undefined because the input bindings are not yet
+ intialized when the constructor is called]
+
+
+--------------------------------------[ngDoCheck()]
+
+. used for custom change detection
+. implement our own change detection algorith for the given componenet
+
+
+
+1. Use the ngOnChanges() to check the limitations.
+2. Refactor it using the ngDOCheck()
+3. unlike ngOnChanges it checks non input properties
+
+
+never use the ngOnChanges() & ngDoCheck() hooks together in the same componnet
+They are not intended to be implemented together inside the same compoenent as 
+it causes unwanted behaviour & increases the code complexity
+
+[use]
+1. watching deep changes inmn nested object
+2. any chanegs in 3rd party library
+3. for mutual state management 
+
+
+
+--------------------------------[ngAfterContentInit()]
+lifecycle hook is invoked whever there is some content projected
+into the component.
+
+content projected:: with @ input we cant give html or css so with the help
+of ng-content we hgive
+
+1. called only once throughout the components lifecycle
+
+
+@ViewChild()
+@ContentChild()
+
+-------------------------------------[ngAfterContentChecked()]----------------------------------------
+
+
+checks for the content of the component on every change detection cycle
+
+this hook will get invoked each time the content of the component is changed after being projected
+
+
+
+----------------------------------------[ngAfterViewInit()]
+
+is called when the angular finishes the intialization of the view in the DOM
+
+
+
+after angular has fully initialized the view the ng AFterViewInit() gets called .Mostly this hook involves DOM
+related tasks including the child componnets view
+
+
+VIEW LOADS AFTER THE CONTENT
+
+called after the angular has fully initialized the componnets view or any 
+child views which are basically the related template files.
+
+
+delay should be give to avoid error in second stage checking 
+
+--------------------------------------------[ngAfterViewChecked()]
+angular fires the ngAfterViewChecked() hook after checking the componnet view and the child views
+
+
+
+------------------------------------[ngDestroy]
+hook is called only once durring the compoenets lifecycle right brfore the component
+gets destroyed
+
+Any cleanup code for the componenet should be written inside this hook 
+
+LIKE : removcal of local storage
+stop timer
+tak that  prevent teh memory leaks
+
+
+THE ng onDEstroy() is not called when the user refreshes the page or closes the 
+browser
+
+
+
+
+
+
+------------------------------------------------------------------------------------------
+---------------------------------[DECORATOR]
+
+PRefixed with  :@
+1. Used to pass the information
+2. A function with some code logic i.e meta data
+
+
+
+like springbooot autowired
+
+with a decotrator - we are passing information to the component, class or a function on how they 
+should be processed instantiated and used at runtime
+
+
+
+
+[types]
+
+1.class decorator
+
+@NgModule
+@Component
+@Injectable
+@Directive
+@Pipe
+
+2. Method Decorators
+@HostListener
+
+3.Parameter Decorators
+@Inject
+@Self
+@SkipSelf
+@Optional
+@Host
+
+4. Property Decorators
+@Input
+@Output
+@HostBinding
+@ContentChild
+@ViewChild
+@ViewChildren
+
+
+
+
+------------------------------------[CalssDecorator]------------------------------------------
+
+		[@NgMOdule]
+@NGModule : n0o longer after 17 as angular provide standalone by default 
+: no need to create an extra set of modules
+
+but helpfull for : Dependency injection
+		: Service provider
+		:lazy loading 
+
+
+Basically an object with some properties which takes an array as value 
+@NgModule({.....})
+
+1. declaration:[]:Here we put all the components defined inside the project
+		export is the keyword used to make the class globally available for use
+
+
+2. imports:[BrowserModule,AppRoutingModule]: contains the necessary services which are imported to launch & run the
+		 application inside the browser
+
+3. providers:[]:: here we provides the service or guard files known as dependencies,
+		injected into the component
+4. bootstrap:[AppComponent]::Here we give the compoenent name to be loaded first
+		inside the browser-i.e..,the entry point
+		
+
+
+
+		[@Component]
+
+decorator marks the class as an angular component & provides necessary metadata which
+ determines how the componenet should be processed during runtime.
+Selector:''
+standalone: true,::It doesnt need to be declared in an @NgModule() & can directly import 
+		dependencies
+imports:[]
+templateUrl:
+styleUrl:[]
+template:''
+style:''
+animation:[]
+directives:[]
+pipes:[]
+
+
+----------------------[PropertyDecorators]
+-----------@Input     parent to child    [child]='parent'
+::decorator marks the property as input property so that it can receive 
+	the data from the parent component
+
+
+::alias
+
+@Input('parentMessage') receiveMessage:string='';
+
+
+
+arrayofOBJeCT:::{id:number;.......}[]:: type safe 
+
+-------------@Output   child to parent   (child)='parent($event)'
+
+when the property is decorated with @Output decorator that property raises
+an event to notify the parent about the change
+
+@Output() myEvent = new EventEmitter()
+emitEvent(){this.myEvemt.emit('EVENT EMITTED FROM CHILD')}
+
+------------------------------------@ViewChild
+
+this decorator is used to get the reference of the DOM element in the component 
+
+it renders a tree as soon as an application bootstraps & each componenet represents a view known as view reference(ViewRef)
+
+Each component instance holds a View reference
+
+Helps to perform que5ry operations on the view & any change in the DOm will reflect in it 
+
+
+@ViewChild(ChildComponent) cc?:ChildComponent;:::: ? -> This pproperty has no value at the initial stage but be assigned later
+
+acessing child method::: this.cc?.incrCounter();
+
+::: for accessing a butn we give refference and is passed to viewchild :: and type as 
+ElementRef:-> A class that is used whenever we want to deal with the elements of DOM as
+ this class acts as a wrapper around the native elements of DOM::<HTMLButtonButtonElement>
+
+
+[when dealing with DOM manipulationb it is always a better prctice to execute such code
+inside the ngAfterViewInit() hook]
+
+ngAfterViewINit() is a lifecycle hook in agular that is commonly used with @ViewChild
+
+ngAfterViewInit():void{
+if(this.btnRef?.nativeElemenet){
+this.btnRef.nativeElement.innerHtml=''counter++';}}::THE PROPERTY THAT IS PROVIDED BY THE ELEMENTREF CLASS TO TARGET THE ELEMENT OF DOM 
+
+
+-------------------------------------[@ContentChild]
+
+
+
+instead of getting the components DOM element we get the reference of the content projected 
+into the components view
+
+1. for Content projection 
+2. make use of the ngAfterContentInit()
+
+
+ngAfterContentInit():void{
+const content= this.paraRef?.nativeElement;
+content.style.font='italic'}
+
+
+-------------------------------------[@HostBinding]
+
+
+The @HostBinding decorator is used for binding the properties on element/component/class 
+with the help of custom directive 
+
+HB allows binding the property on the host element
+
+
+ng g d directiveName --skip-tests
+
+inside directive:::{
+
+@HostBinding('style.background') bgcolor ='#f2aaa4cf';
+}
+
+
+
+
+The reference variable bgcolor are used to assign the value to the properties explicitly
+
+
+-----------------------------------------[METHOD DECORATOR]
+A method decorator is very similar to property decorator, but is used for the methods 
+instead as it allows to decorate specific methods within the given cimponent class
+
+
+@HostListner
+
+[
+1. ?: string
+This means optional property.
+2. !: string
+This is the definite assignment assertion.
+]
+
+
+
+
+-----------------------------------[Parameter decorators]
+The arameter decorators are used to decorate the parameters and they are mainly applied to a constructor parameter to
+inject or provide additional metadata resources inside the application
+
+called as dependency injection 
+like service injection 
+
+
+
+
+
+-----------------------------------[PIPELINE]------------------------------
+| : used when we are uncertain of what value to intialize with a property
+
+previousValue:string|undefined;
+
+
+Pipes are the template binding feature that allowssome transformation on the data before 
+displaying them 
+
+
+The oreder of pipe is considered fif
+
+
+|uppercase,|lowercase, async,filter,map,date,slice,oredrBy,,percentage,currency,join,json 
+,titlecase
+
+
+
+
+|date:"dd-mm-yyyy"   or /   
+mm:02
+mmm:sep
+mmmm:septemper
+
+[slice]
+
+|slice:0:3
+from 0 to 3 give 
+-value to reach end by subracting from last position 
+
+slice:-11
+end be : 0  to -11 position 
+
+with array same 
+slice:1 to retrevie that element from array
+dlice -1: to retreive last elemnet
+n n 
+
+|currency:'USD'
+
+TIP 1:TYPE CAST BETTER 
+
+product:{name:string;imageUrl:string}[]=[{}]
+
+
+---------------------------[custom pipe]
+ng g pipe pipename
+
+* @Pipe({})
+
+* transform():: maijn method and it takes one argument which 
+	        needede to be transformed.
+
+-----------------------------------------
+pure pipe:transforsm data whenever it detects the change in input value
+or process the input and returns values without any side effects
+: used to gat called only on the input value changes
+cons: never modify the input array
+
+ impure pipe:transforms the data even if the input data hasnt changed
+:change of input value for updating the view   2 times
+----------------------------------------------------------------------
+
+
+
+
+					ADVANCED
+					--------
+	
+--------------------------------------[Routing]
+refers to navigating between diffenet componenet
+. all the routing is carried out by the router services, which 
+is responsible for navigating between components
+
+app.route.ts:
+
+[{path:'',component: }]
+path,component,loadComponent,reirectTo,pathMatch,children....
+
+PROVIDED BY  ROUTERMODULE
+
+<router-outlet>: without this angular wouldnt know where to inject the content 
+for the current route, meaning no components would be rendered for navigation 
+
+<a routerLink="./">: router Link is an attribute directive that allows to add behaviour to an existig 
+element by changing its attribute
+
+
+traditional mapping : static routing enables mapping between the URL and a specific component.
+eg: {p:'',c:}
+which are not changed untill we change it in manually 
+Dynamic routing is acheived by passsing parameters to the routes
+eg:{p:'/employee/:empname',c:}
+<a href="#" [routerLink]="['/employee',emp.empname]">
+
+
+
+-----------------------------[WILDCARD ROUTING ]
+
+   ** :: for allll the route that are not configured
+its a specilal route the router will select this route if the requested url soent match
+
+{p:'**',component:pageNoTFound}
+
+
+----------------------------[redirect to:]
+{path:'', redirectTo:'shirts',pathMatch:"full"}
+pathmatch : how to match the path :
+full: match the whole route path
+prefox: matches the URL if it starts with the route s path  
+
+
+
+---------------[activated route]
+import it in the class
+
+Used to get the information about the currently activated route.
+provides access to various properties and parameters 
+
+
+route : {path:'employee/:id',component:};
+
+employee{
+
+id:strijng='';
+
+constructor(private route:ActivatetedRoute ){
+
+const params= this.route.snapshot.param;
+this.id = param['id'];
+
+}
+
+}
+
+
+
+---[snapshot]
+is a property of activatedRoute that cptures a static, one-time view of the routes parameters,
+query parameters,data and fragment at the moment the route was activated
+
+
+
+ -----------------------------------------------------[queryParameter] 
+?..&...
+
+part of get Http call method
+
+route.queryParams.subscribe((params)=>{
+this.id=params['id']
+this.name=params['name'];
+})
+
+
+
+@for(emp of employee; tarck $index){
+
+a href='' [routerLink]="['/employee']"
+[queryParams]
+}
+
+
+
+routerLink: its a directive
+queryParams: property
+
+queryParams: property of Activated Route class
+an observable property
+
+subscribe: Used to continously monitor the query parametersin the 
+URL and update the component when they change.
+
+The query parameters are very usful when we want to fetch or pass the information
+through a URL and further modify the behaviour 
+of the receiveing component
+
+-------------------------------------[Navigate()]
+The navigate() method is used to programmatically navigate to diffecnt routes in the 
+application.
+
+Its a part of the Router service, which handles client- side routing & allows 
+to dynamically control
+
+
+in constructor use Router : to use navigate to method  with queryparam : as object 
+
+
+navigateToDetail(empID:number,empName:string){this.router.navigate(['/employee-detail'],{queryParams:{id:empId,name:empName},}); }
+
+vs
+Routuing
+
+<a [routerLink]="['/employee-detail']" [queryParams]="{id:employee.id,name:employee.name}">
+
+
+how to navigate&clear any existing query parameters
+this.router.navigate(['/employee-detail'],{queryparams:{},});
+
+----------------------------------------------------------------------------
+
+
+-----------------------[Service]
+
+used to perform tasks such as fetching data from serever , handling data manipulation
+
+
+[ng g s dependecies/ employee]:: create service inside depencies folder  with namee employee
+
+
+common way to inject is constructor injection 
+
+
+Angular dependecy injection system automatically 
+resolves the dependencies and provides an instance of the service
+when the component is instantiated.
+
+
+--------------------[@Injectable]---------
+
+The angular dependency injection mechanism automatically identifies that
+ class as an injectable class and allow that class to be injected in
+different components or class.
+It indicates that a component , class , pipe or NgModule has a dependency on a 
+service
+
+
+
+
+
+when we provide a service at the root level, Angular creates a single , shared instance
+of the given service & injects it into any class that asks for it , kniow as 
+sinngleton service
+
+
+levels:[ MOdule level]
+
+@NgModule({
+providers:[] 
+}) 
+
+
+, service level
+@Injectable({providedIn:''})
+
+ , component level 
+
+@Component({
+providers:[]
+})
+
+
+
+@Component({
+providers:[specify the needed serviec ethat is not even in root level]
+
+})
+
+providers are used for implementing dependency injection. They are responsible for registring and confuguring
+the dependencies that component sand services require.
+
+
+
+
+
+
+
+--------------------------[inject()]
+The inject function helps in cutting constructor
+.. is often yuused in standalone components or functional service
+ where constructor might not be a practical approah 
+
+
+Also it is very helpful in defer loading i.e lazy loading of the service 
+wntil its actually needed. 
+
+-----------------------------------[InjectingTokens]
+it act as a key to  uniquely identify  provider  i.e class   at runtime
+
+
+
+Token types: Type token, string token, Injection token object
+
+
+//type token 
+in @ componnet providers:[
+{provide:  tokenName, useClass:serviceclsssname  },.....
+]
+
+
+provider with last is selected if  tokenName is same 
+
+public logger = inject( tokenName);
+ngOnInit():void{ this.logger.log();}
+provide:the Dependency Injection system needs a key to locate the provider.
+useClass: Tells teh angular DI to instantiate the provided class when the dependecy i sinjected
+
+useClass, useExisting,useFactory, useValue
+
+
+
+//STRING TOKEN 
+
+in @ componnet providers:[
+{provide:  'tokenName', useClass:serviceclsssname  },.....
+]
+
+when we want to inject string token we have to use constructor()
+
+constructor(@Inject('tokenName') private name:serviceclsssname )
+
+
+
+//Injection token 
+
+when we want to provide a value or configuration that is not based on a
+class or type , then we use the injection token object.
+
+
+The injectionToken is a speciakl token used in angular to inject values that are 
+not classes, such as configuration OBJECT< PRIMITIVE VALUES or INTERFACE
+
+
+1. create seperate ts file 
+2. make variable export 
+
+export const LOG_msg1= new InjectionToken<className>('');
+import injection token as values instead of string 
+is more preferable
+
+
+//useValue
+
+the useValue provider key provides a specific value to be used as dependency
+
+ @ componnet providers:[
+{provide:  'tokenName', useValue:'This is the String' },.....
+
+]
+
+
+constructor(@Inject('tn') public msg:string )
+
+
+mostly used in ruyntime configurations such as base api address
+
+
+//useExisting
+useExisting: let us map one token to another like an alias.
+
+to reuse the functionality in different component / service
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

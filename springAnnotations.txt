@@ -1,0 +1,106 @@
+@Component:
+The @ Component annotatiopn indicates that an annotated class 
+is a spring bean / 
+component.
+
+The @Component annotation tells spring container to automatically 
+create spring bean .
+
+------
+@Componet("pizzaDemo")
+ ---
+class name but should be first letter lower case
+
+var c:ConfigurableApplicationContext = SpringApplication.run().....
+PizzaController pc = c.getBean(PizzaController.class)
+
+or
+PizzaController pc = (PizzaController)c.getBean(name="pizzaDemo");
+
+or
+PizzaController pc = (PizzaController)c.getBean(name="pizzaController");
+
+
+sysout(pc.getPizza())
+-------------------------
+
+@Autowired
+
+used to inject bean automatically , is usd in constructor injection,
+ setter injection and field injection
+
+
+
+------------------------------
+@Qualifier
+
+is used in conjuction with Autowired to avoid confusion when we have two or 
+more beans configured for same type.
+
+
+
+when we have multiple class implementation for an interface when comes
+to constructor injection 
+
+@Qualifier("className") interface iname{}
+
+
+-------------
+@Primary Annotation
+to give higher preference to a bean when there are multiple beans of 
+the same type.
+
+
+
+------------------
+@Controller
+In the Spring Framework (Java), a Controller is a special class
+ that handles HTTP requests and returns responses.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

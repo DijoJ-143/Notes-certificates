@@ -1,0 +1,131 @@
+
+----------why---------
+Dependency injection: called sometime dependecy inversion 
+Its all coz spring is a cointainer
+
+::
+for new object  first in bean factory and with help of spring xml spring bean is created and is handed to objcet so spring knows about the object created  
+
+
+[ApplicationContext]
+first move spring.xml to src folder 
+
+ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml")
+T t = factory.getBean("t");
+t.draw();:: for example
+
+
+-----------------------codes---------------------------
+
+in spring.xml
+<beans>
+<bean id = "t" class="">
+<property name ="" value="">:: used to change any variable inside the class
+</.>
+
+
+in eclips
+BeanFactory factory = new xmlBeanFactory(new FileSystemResource("spring.xml"))
+T t = factory.getBean("t");
+t.draw();:: for example
+
+
+------------------------------------------
+<beans>
+<bean id=""triangle class="">
+<property name ="pointA" ref="zeroPoint">
+</bean>
+
+<bean id = "zeropiont" class="">
+<property name="x" value ="0">
+</bean>
+
+--------------------------------------
+
+<bean id=""triangle class="">
+<property name ="pointA" >
+<bean id = "zeropiont" class="">
+<property name="x" value ="0">
+</bean>
+
+</bean>
+
+---------------collection
+
+<beans>
+<property name = "">
+<list>
+<ref bean = ""><>
+</l>
+</p>
+</b>
+
+----------------------autowired
+<bean id = "" class="" autowire="byName">
+
+autowire="byType"  :: help of class defined checks
+autowire="constructor" :: instantiate the beasn and pass on 
+
+
+-----------------------scope
+1.Singleton-Only once per Spring container::default scope
+
+<bean id = "" class="" autowire="byName" scope = "">
+
+creates one bean and hand over that bean regardless of thr umber of request made
+2. Prototype : new bean created  with every request  or refference 
+
+
+web aware scopes
+1. Request: new bean per servelet request	
+2.Session: new bean per session 
+3.Global Session: new bean per global http session (portlet context )
+
+
+-------------------------------------------LIFECYCLE CALLBACK
+
+
+
+---------------------------tips----------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+------------------Annotations------------------------------------------------
+
+
+<bean id = "t" class="">
+<property name ="" value="">
+<property name ="" ref="">
+
+<property name ="">
+ idref="">
+</property >
+
+<constructor-arg value = />
+<constructor-arg type="" value=""/>
+<constructor-arg index="" value=""/>
+<alias name="" alias=""/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

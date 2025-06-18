@@ -1,0 +1,20 @@
+ controller -> service-> repository
+		|			
+		mockito
+
+
+
+--------------------------------------------------
+ @RunWith(SpringRunner.class)
+@SpringBootTest
+
+@Autowired
+service
+
+@MockBean
+repository
+
+
+@Test
+inside method
+when(repo.findAll()).thenReturn()

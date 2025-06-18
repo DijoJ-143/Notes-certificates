@@ -1,0 +1,65 @@
+java17
+
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+
+
+
+----------------------Eurekka server-----------------
+
+dependency : eurekka server,spring web
+
+prop: 
+server.port=8761
+eureka.client.register-with-eureka=false
+eureka.client.fetch-registry=false
+
+@SpringBootApplication
+@EnableEurekaServer
+
+
+
+-------------------api gateway
+dependency: Gateway(spring cloud routing ),eureka discovery client 
+
+
+url:: appliucation name
+path:i.e mapping 
+
+1. appli.yml
+
+
+spring:
+application:
+ name:API-Gateway
+
+
+cloud:
+	gateway:
+		routes:
+			-id:StudentService
+			url:lb://StudentService
+			predicates:
+			-Path=/student/**
+
+			-id:LibraryService
+		url:lb://LibraryService
+			predicates:
+			-Path=/library/**
+
+			-id:BookService
+		url:lb://BookService
+		predicates:
+			-Path=/book/**
+
+server:
+	port:
+	9094
+eureka:
+instane:
+hostname:localhost
+
+
+			

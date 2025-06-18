@@ -1,0 +1,46 @@
+aspect oriented programming 
+
+
+
+some tutorial of springboot
+------------------------------
+@SpringBootApplication{
+SpringAPplication.run(classname.class,arg)
+}
+
+----------------------------
+
+@RestController{
+
+@RequestMapping("/")
+{return ""}
+
+}
+
+--------------------------[get]
+@ReM({id})
+method(@PathVariable Integer id )::
+ means to bind the variable with the url variable id
+
+
+----------------------------[post]
+
+@ResquestBody class obj
+@pathVariable
+
+
+
+
+
+
+
+---------------------rest api -------------------------------------------------
+
+
+
+
+
+
+
+
+
